@@ -1,0 +1,4 @@
+devs-MacBook-Pro.local {
+  reverse_proxy {$IPV4PARRENT}:3000
+  reverse_proxy /api {$IPV4PARRENT}:8080
+}
