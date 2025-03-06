@@ -1,4 +1,10 @@
 devs-MacBook-Pro.local {
+  tls /etc/certs/devs-MacBook-Pro.local.pem /etc/certs/devs-MacBook-Pro.local-key.pem
   reverse_proxy {$IPV4PARRENT}:3000
+  reverse_proxy /ws {$IPV4PARRENT}:3000 {
+    header_up Host {host}
+    header_up Connection "Upgrade"
+    header_up Upgrade "{upstream_upgrade}"
+  }
   reverse_proxy /api {$IPV4PARRENT}:8080
 }
